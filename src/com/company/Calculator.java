@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Calculator {
 
-    static final HashMap<String, Integer> precedence;
+    static final Map<String, Integer> precedence;
 
     static {
         precedence = new HashMap<>();
