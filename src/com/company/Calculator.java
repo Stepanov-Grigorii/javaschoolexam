@@ -22,35 +22,32 @@ public class Calculator {
 
         Queue<String> infixQueue = new LinkedList<>();
         Character c;
-        String input;
         String multiDigit = "";
+        statement = statement.replaceAll(" ", "");
 
-        input = statement;
-        input = input.replaceAll(" ", "");
-
-        for (int i = 0; i < input.length(); i++) {
-            c = input.charAt(i);
+        for (int i = 0; i < statement.length(); i++) {
+            c = statement.charAt(i);
 
             if (c.equals('(') || c.equals(')')) {
                 infixQueue.add(c.toString());
             } else if (!Character.isDigit(c)) {
                 infixQueue.add(c.toString());
             } else if (Character.isDigit(c)) {
-                if (i + 1 < input.length() && input.charAt(i + 1) == '.')
+                if (i + 1 < statement.length() && statement.charAt(i + 1) == '.')
                 {
                     int j = i + 1;
-                    multiDigit = c.toString() + input.charAt(j);
-                    while (j + 1 <= input.length() - 1 && Character.isDigit(input.charAt(j + 1))) {
-                        multiDigit = multiDigit + input.charAt(j + 1);
+                    multiDigit = c.toString() + statement.charAt(j);
+                    while (j + 1 <= statement.length() - 1 && Character.isDigit(statement.charAt(j + 1))) {
+                        multiDigit = multiDigit + statement.charAt(j + 1);
                         j++;
                     }
                     i = j;
                     infixQueue.add(multiDigit);
                     multiDigit = "";
-                } else if (i + 1 <= input.length() - 1 && Character.isDigit(input.charAt(i + 1))) {
+                } else if (i + 1 <= statement.length() - 1 && Character.isDigit(statement.charAt(i + 1))) {
                     int j = i;
-                    while (j <= input.length() - 1 && Character.isDigit(input.charAt(j))) {
-                        multiDigit = multiDigit + input.charAt(j);
+                    while (j <= statement.length() - 1 && Character.isDigit(statement.charAt(j))) {
+                        multiDigit = multiDigit + statement.charAt(j);
                         j++;
                     }
                     i = j - 1;
